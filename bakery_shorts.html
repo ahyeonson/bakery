@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강동 베이커리 숏츠</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--y:#ffe14d;--p:#ff2bd6;--c:#22f0ff;--o:#ff7a18;--glass:rgba(255,255,255,.16);--border:rgba(255,255,255,.5)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:#07020f;display:flex;align-items:center;justify-content:center;font-family:"Noto Sans KR",sans-serif;color:#fff;overflow:hidden}
+.stage{position:relative;height:min(100vh,calc(100vw*16/9));aspect-ratio:9/16;overflow:hidden;border-radius:clamp(0px,2vw,18px);background:#1a0633}
+.stage.beat{animation:beat .45s ease-out}
+@keyframes beat{0%{transform:scale(1.06)}100%{transform:none}}
+.rays{position:absolute;left:50%;top:45%;width:260%;aspect-ratio:1;translate:-50% -50%;opacity:.55;
+  background:repeating-conic-gradient(from 0deg,#ff2bd6 0 8deg,#7a1fff 8deg 16deg,#ff7a18 16deg 24deg,#22f0ff 24deg 32deg);animation:spin 14s linear infinite;filter:saturate(1.3)}
+@keyframes spin{to{rotate:360deg}}
+.vignette{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,transparent 25%,rgba(10,0,25,.85) 80%)}
+.blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:.8;animation:float 3s ease-in-out infinite alternate;mix-blend-mode:screen}
+.b1{width:60%;height:35%;background:var(--p);top:-8%;left:-18%}
+.b2{width:55%;height:30%;background:var(--c);bottom:2%;right:-20%;animation-delay:-1s}
+.b3{width:50%;height:28%;background:var(--o);top:38%;left:-20%;animation-delay:-2s}
+@keyframes float{to{transform:translate(16%,10%) scale(1.2)}}
+.marquee{position:absolute;top:0;left:0;right:0;z-index:4;background:linear-gradient(90deg,var(--y),var(--o));color:#1a0633;font-weight:900;
+  font-size:min(2.3vh,3.9vw);white-space:nowrap;overflow:hidden;padding:1.4% 0;top:1.2%;transform:rotate(-2deg) scale(1.08);box-shadow:0 6px 20px rgba(255,122,24,.6)}
+.marquee span{display:inline-block;animation:mq 7s linear infinite;padding-left:100%}
+@keyframes mq{to{transform:translateX(-100%)}}
+.bar{position:absolute;top:7%;left:5%;right:5%;height:7px;border-radius:7px;background:rgba(255,255,255,.25);z-index:4;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c),var(--p),var(--y));box-shadow:0 0 12px var(--p)}
+.scene{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12% 7% 26%;text-align:center;opacity:0;pointer-events:none}
+.scene.on{opacity:1}
+.scene.on .pop{animation:pop .6s cubic-bezier(.2,1.8,.4,1) both}
+.scene.on .up{animation:up .45s ease-out both}
+.scene.on .slam{animation:slam .5s cubic-bezier(.3,1.6,.5,1) both}
+.scene.on .d1{animation-delay:.12s}.scene.on .d2{animation-delay:.3s}.scene.on .d3{animation-delay:.5s}
+@keyframes pop{0%{transform:scale(.2) rotate(-14deg);opacity:0}100%{transform:none;opacity:1}}
+@keyframes up{0%{transform:translateY(50px) skewY(6deg);opacity:0}100%{transform:none;opacity:1}}
+@keyframes slam{0%{transform:scale(3);opacity:0;filter:blur(8px)}100%{transform:none;opacity:1;filter:none}}
+.big{font-family:"Black Han Sans",sans-serif;font-size:min(27vh,46vw);line-height:.95;
+  background:linear-gradient(90deg,var(--y),#fff,var(--c),var(--p),var(--y));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shine 2.2s linear infinite;filter:drop-shadow(0 0 14px rgba(255,43,214,.8)) drop-shadow(0 6px 0 #3b0a6b)}
+.scene.on .big{animation:shine 2.2s linear infinite,wob 1.2s ease-in-out infinite alternate}
+@keyframes shine{to{background-position:300% 0}}
+@keyframes wob{to{transform:rotate(-3deg) scale(1.04)}}
+.mid{font-family:"Black Han Sans",sans-serif;font-size:min(8.5vh,14.5vw);line-height:1.1;color:#fff;
+  text-shadow:0 0 10px var(--p),0 0 24px var(--p),4px 4px 0 #3b0a6b}
+.hot{color:var(--y);text-shadow:0 0 10px var(--o),0 0 26px var(--o),4px 4px 0 #3b0a6b}
+.card{margin-top:4%;padding:4% 6%;border-radius:22px;background:var(--glass);border:2px solid var(--border);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-weight:900;font-size:min(3.2vh,5.4vw);line-height:1.45;box-shadow:0 0 24px rgba(34,240,255,.45),inset 0 0 18px rgba(255,255,255,.15)}
+.chips{display:flex;gap:3%;margin-top:5%;justify-content:center;flex-wrap:wrap}
+.chip{padding:2.5% 5%;border-radius:999px;background:linear-gradient(90deg,var(--p),#7a1fff);border:2px solid #fff;font-weight:900;font-size:min(3vh,5vw);box-shadow:0 0 18px var(--p)}
+.chip:nth-child(2){background:linear-gradient(90deg,var(--o),var(--y));color:#1a0633;box-shadow:0 0 18px var(--o)}
+.sticker{position:absolute;z-index:3;font-family:"Black Han Sans",sans-serif;font-size:min(4vh,6.8vw);padding:1.6% 4%;border-radius:12px;background:var(--y);color:#1a0633;
+  border:3px solid #1a0633;box-shadow:5px 5px 0 #1a0633;transform:rotate(12deg)}
+.scene.on .sticker{animation:stk .5s .4s cubic-bezier(.2,1.8,.4,1) both}
+@keyframes stk{0%{transform:scale(0) rotate(40deg)}100%{transform:scale(1) rotate(12deg)}}
+.s-l{left:6%;top:16%;transform:rotate(-12deg);background:var(--c)}
+.s-r{right:6%;top:18%}
+.sub{position:absolute;left:5%;right:5%;bottom:7%;z-index:4;text-align:center;font-weight:900;font-size:min(3.3vh,5.6vw);line-height:1.35;
+  padding:3% 4%;border-radius:16px;background:rgba(10,0,25,.6);border:2px solid var(--y);box-shadow:0 0 18px rgba(255,225,77,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.sub:empty{display:none}
+.flash{position:absolute;inset:0;z-index:5;opacity:0;pointer-events:none;background:radial-gradient(circle,#fff,var(--p) 60%,transparent)}
+.flash.go{animation:fl .4s ease-out}
+@keyframes fl{0%{opacity:.8}100%{opacity:0}}
+.shake{animation:sh .45s}
+@keyframes sh{15%{transform:translate(-9px,5px) rotate(-1deg)}35%{transform:translate(9px,-5px) rotate(1deg)}55%{transform:translate(-6px,3px)}75%{transform:translate(4px,-2px)}}
+#fx{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+.emo{position:absolute;bottom:-10%;font-size:min(5vh,8.5vw);animation:rise linear forwards}
+@keyframes rise{to{transform:translateY(-130vh) rotate(540deg)}}
+.cf{position:absolute;width:10px;height:16px;border-radius:2px;animation:burst .9s cubic-bezier(.1,.8,.3,1) forwards}
+@keyframes burst{to{transform:translate(var(--dx),var(--dy)) rotate(720deg);opacity:0}}
+.bars{display:flex;align-items:flex-end;gap:4%;height:28%;width:82%;margin-top:4%}
+.bars div{flex:1;border-radius:10px 10px 0 0;background:rgba(255,255,255,.35);position:relative;transform-origin:bottom}
+.scene.on .bars div{animation:grow .7s cubic-bezier(.2,1.6,.4,1) both}
+.scene.on .bars div:nth-child(2){animation-delay:.08s}.scene.on .bars div:nth-child(3){animation-delay:.16s}.scene.on .bars div:nth-child(4){animation-delay:.3s}.scene.on .bars div:nth-child(5){animation-delay:.2s}
+.bars div.hl{background:linear-gradient(180deg,var(--y),var(--p));box-shadow:0 0 26px var(--p)}
+.bars span{position:absolute;bottom:-1.7em;left:-20%;right:-20%;font-size:min(1.9vh,3.2vw);font-weight:900}
+@keyframes grow{from{transform:scaleY(0)}}
+.cover{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3.2%;
+  background:rgba(20,0,40,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center;padding:8%}
+.cover h1{font-family:"Black Han Sans",sans-serif;font-size:min(7vh,12vw);line-height:1.12;text-shadow:0 0 14px var(--p),4px 4px 0 #3b0a6b}
+.btn{border:3px solid #1a0633;cursor:pointer;font:900 min(3vh,5vw) "Noto Sans KR",sans-serif;padding:3.5% 9%;border-radius:999px;color:#1a0633;
+  background:linear-gradient(90deg,var(--y),var(--o));box-shadow:5px 5px 0 #1a0633;animation:pulse 1s ease-in-out infinite alternate}
+@keyframes pulse{to{transform:scale(1.06)}}
+.ghost{background:var(--glass);color:#fff;border:2px solid var(--border);box-shadow:none;font-size:min(2.4vh,4vw);animation:none}
+.cover p,.cover label{font-size:min(2vh,3.4vw);opacity:.9}
+select{font:700 min(2vh,3.4vw) "Noto Sans KR",sans-serif;padding:1.5% 3%;border-radius:10px;border:2px solid var(--border);background:rgba(20,0,40,.7);color:#fff;max-width:90%}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="rays"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="vignette"></div>
+  <div class="marquee"><span>도파민 주의 · 강동 베이커리 30초 컷 · 서울 291개 상권 싹 다 털었다 · 도파민 주의 · 강동 베이커리 30초 컷 ·</span></div>
+  <div class="bar"><i id="prog"></i></div>
+  <div id="fx"></div>
+  <div class="flash" id="flash"></div>
+
+  <section class="scene"><span class="sticker s-r">실화?</span><div class="big slam">291</div><div class="mid up d1">서울 상권<br><span class="hot">싹 다 털었슈</span></div></section>
+  <section class="scene"><span class="sticker s-l">찾았다!</span><div class="mid up">여기여 여기~</div><div class="big pop d1" style="font-size:min(15vh,26vw)">둔촌역</div>
+    <div class="chips up d2"><span class="chip">유동인구 +9.8%</span><span class="chip">12,032세대</span></div></section>
+  <section class="scene"><span class="sticker s-r">반전</span><div class="mid up">빵 사는 손님은?</div><div class="big slam d1">48<span style="font-size:.5em">%</span></div><div class="card up d2">50대 이상이 절반 가까이!</div></section>
+  <section class="scene"><span class="sticker s-l">피크</span><div class="mid up">제일 바쁜 시간<br><span class="hot">저녁 33%</span></div>
+    <div class="bars d1"><div style="height:42%"><span>아침</span></div><div style="height:68%"><span>점심</span></div><div style="height:68%"><span>오후</span></div><div class="hl" style="height:100%"><span>17~21시</span></div><div style="height:23%"><span>밤</span></div></div></section>
+  <section class="scene"><span class="sticker s-r">딱이여</span><div class="mid up">그려서 컨셉은</div><div class="card up d1" style="font-size:min(4.4vh,7.4vw)">중장년 <span class="hot">식사빵</span><br>+ 퇴근길 <span class="hot">테이크아웃</span></div></section>
+  <section class="scene"><span class="sticker s-l">팩폭</span><div class="mid up">솔직히 말혀유</div><div class="big slam d1" style="font-size:min(14vh,24vw)">4,810만</div><div class="card up d2">한 달 이만큼 팔아야 남어유<br><small style="opacity:.8">영업이익 손익분기, 추정</small></div></section>
+  <section class="scene"><span class="sticker s-r">1호점</span><div class="mid up">일단은</div><div class="big pop d1" style="font-size:min(12vh,21vw)">검증 매장</div><div class="chips up d2"><span class="chip">2027 개점</span><span class="chip">2028 여름 가맹</span></div></section>
+  <section class="scene"><span class="sticker s-l">가보자고</span><div class="mid up">서울 동남권 1등 찍구</div><div class="big slam d1" style="font-size:min(17vh,29vw)">전국<span class="hot">!</span></div><div class="card up d2">강동 베이커리 프로젝트</div></section>
+
+  <div class="sub" id="sub"></div>
+
+  <div class="cover" id="cover">
+    <h1>30초 만에 보는<br><span class="hot">강동 베이커리</span><br>사업계획</h1>
+    <button class="btn" id="playV" type="button">소리 켜고 재생</button>
+    <button class="btn ghost" id="playM" type="button">자막만 재생 (정확히 30초)</button>
+    <label>목소리 <select id="voiceSel"></select></label>
+    <p id="vnote">충청도 사투리 · 높은 톤 · 남성 음성은 Edge 브라우저에서 InJoon 선택</p>
+  </div>
+</div>
+<script>
+(function(){
+  var lines=[
+    ["어이~ 서울 상권 291군데, 내가 싹 다 털어봤슈~",3200],
+    ["찾았지유~ 강동 둔촌역! 사람이 막 늘어유~",3800],
+    ["근디 빵 누가 사는 줄 알어유? 50대 이상이 48퍼센트여~ 허허",3900],
+    ["제일 바쁜 때? 저녁 다섯 시부터 아홉 시! 33퍼센트유~",4000],
+    ["그려서~ 중장년 식사빵에, 퇴근길 테이크아웃! 딱이여~",3700],
+    ["솔직히 말혀유~ 한 달 4천8백만 원은 팔아야 남어유.",4000],
+    ["1호점은 검증 매장이구, 2028년 여름부터 가맹 들어가유~",4000],
+    ["서울 동남권 1등 찍구~ 그다음은 전국이여! 가보자고~",3400]
+  ];
+  var emos=["🥐","🍞","🧁","🥖","💰","🔥","✨","🎉","💥"];
+  var cols=["#ffe14d","#ff2bd6","#22f0ff","#ff7a18","#7a1fff","#fff"];
+  var scenes=document.querySelectorAll(".scene"),sub=document.getElementById("sub"),prog=document.getElementById("prog"),fx=document.getElementById("fx"),
+      flash=document.getElementById("flash"),stage=document.getElementById("stage"),cover=document.getElementById("cover"),sel=document.getElementById("voiceSel");
+  var total=lines.reduce(function(s,l){return s+l[1];},0),voices=[],useVoice=false,t0=0,timer=null,raf=null,idx=-1,emoTimer=null;
+  var MALE=/injoon|hyunsu|bongjin|gookmin|seunghyun|male|남성|남자/i;
+  function loadVoices(){
+    voices=((window.speechSynthesis&&speechSynthesis.getVoices())||[]).filter(function(v){return /ko/i.test(v.lang);});
+    voices.sort(function(a,b){return (MALE.test(b.name)?1:0)-(MALE.test(a.name)?1:0);});
+    sel.innerHTML=voices.map(function(v,i){return '<option value="'+i+'">'+v.name+(MALE.test(v.name)?' (남성)':'')+'</option>';}).join("")||'<option>한국어 음성 없음</option>';
+    var hasMale=voices.some(function(v){return MALE.test(v.name);});
+    document.getElementById("vnote").textContent=hasMale?"충청도 사투리 · 높은 톤 · 남성 음성 자동 선택됨":"충청도 사투리 · 높은 톤 · 이 브라우저엔 남성 음성이 없어유. Edge에서 열면 InJoon 남성 음성 사용 가능";
+  }
+  if(window.speechSynthesis){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}
+  function confetti(){
+    for(var k=0;k<34;k++){var d=document.createElement("i");d.className="cf";
+      var a=Math.random()*Math.PI*2,r=120+Math.random()*260;
+      d.style.cssText="left:50%;top:42%;background:"+cols[k%cols.length]+";--dx:"+(Math.cos(a)*r)+"px;--dy:"+(Math.sin(a)*r)+"px";
+      fx.appendChild(d);setTimeout(function(n){n.remove();}.bind(null,d),950);}
+  }
+  function emoji(){var e=document.createElement("span");e.className="emo";e.textContent=emos[Math.floor(Math.random()*emos.length)];
+    e.style.left=(Math.random()*90)+"%";e.style.animationDuration=(2.2+Math.random()*1.8)+"s";fx.appendChild(e);setTimeout(function(){e.remove();},4200);}
+  function show(i){
+    idx=i;scenes.forEach(function(s,k){s.classList.toggle("on",k===i);});
+    sub.textContent=lines[i][0];
+    flash.classList.remove("go");void flash.offsetWidth;flash.classList.add("go");
+    stage.classList.remove("shake","beat");void stage.offsetWidth;stage.classList.add(i%2?"beat":"shake");
+    confetti();
+    var done=false,next=function(){if(done)return;done=true;clearTimeout(timer);if(i+1<lines.length)show(i+1);else end();};
+    if(useVoice&&window.speechSynthesis){
+      speechSynthesis.cancel();
+      var u=new SpeechSynthesisUtterance(lines[i][0]);u.lang="ko-KR";
+      var v=voices[+sel.value];if(v)u.voice=v;u.rate=1.2;u.pitch=1.55;
+      u.onend=function(){setTimeout(next,120);};
+      speechSynthesis.speak(u);timer=setTimeout(next,lines[i][1]+2000);
+    }else{timer=setTimeout(next,lines[i][1]);}
+  }
+  function tick(){var p=Math.min(1,(performance.now()-t0)/total);prog.style.width=(p*100)+"%";if(idx>=0)raf=requestAnimationFrame(tick);}
+  function start(v){useVoice=v;cover.style.display="none";t0=performance.now();cancelAnimationFrame(raf);raf=requestAnimationFrame(tick);
+    clearInterval(emoTimer);emoTimer=setInterval(emoji,260);show(0);}
+  function end(){prog.style.width="100%";cancelAnimationFrame(raf);idx=-1;
+    setTimeout(function(){clearInterval(emoTimer);cover.style.display="flex";cover.querySelector("h1").innerHTML='한 번 더<br><span class="hot">볼거유?</span>';},1600);}
+  document.getElementById("playV").onclick=function(){start(true);};
+  document.getElementById("playM").onclick=function(){if(window.speechSynthesis)speechSynthesis.cancel();start(false);};
+})();
+</script>
+</body>
+</html>
